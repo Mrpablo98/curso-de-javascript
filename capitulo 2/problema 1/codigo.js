@@ -1,28 +1,22 @@
 
+let free=false;
 
-let free = false;
+function comprobarEdad(){
 
-const validarCliente = (time)=>{
-	let edad = prompt("¿Cual es tu edad?");
-	if (edad > 18) {
-		if (time >= 2 && time < 7 && free == false) {
-			alert("podes pasar gratis porque sos la primer persona despues de las 2 AM") ;
-			free = true;
-		} else {
-			alert(`son las ${time}:00Hs y podes pasar, pero tenes que pagar la entrada`);
-		}
-
-	} else {
-		alert("mira papu, sos menor de edad por ende no vas a pasar, MAQUINOLA");
-	}
+let date=new Date();
+let hour=date.getHours();
+let edad=document.getElementById('edad').value;
+console.log(hour);
+console.log(date)
+document.getElementById('entrada').innerHTML="";
+if(edad<18){
+    document.getElementById('resultado').innerHTML= "No puede ingresar, debe ser mayor de edad";
+}else if(edad>=18){
+    document.getElementById('resultado').innerHTML="Puede ingresar";
+    if(hour>=2 && hour<=7 && free==false){
+        document.getElementById('entrada').innerHTML="No tiene que pagar, la entrada es gratuita a partir de las 2 am";
+        free=true;
+    }
 }
 
-
-validarCliente(23);
-validarCliente(24);
-validarCliente(0.2);
-validarCliente(0.6);
-validarCliente(1);
-validarCliente(2);
-validarCliente(2.4);
-validarCliente(3);
+}
